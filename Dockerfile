@@ -1,14 +1,14 @@
 FROM node
 
-#https://github.com/sonarwhal/sonarwhal
+#https://github.com/webhintio/hint
 
-# https://github.com/sonarwhal/sonarwhal/issues/600
+# https://github.com/webhintio/hint/issues/600
 RUN apt-get update && apt-get install -y curl apt-transport-https && \
-    npm install -g --engine-strict sonarwhal --unsafe-perm=true
+    npm install -g --engine-strict hint @hint/configuration-web-recommended @hint/configuration-progressive-web-apps --unsafe-perm=true
 
-COPY dot-sonarwhalrc /.sonarwhalrc
+COPY dot-hintrc /.hintrc
 
-ENTRYPOINT ["sonarwhal"]
+ENTRYPOINT ["hint"]
 CMD ["-h"]
 
 # docker build -t sw .
